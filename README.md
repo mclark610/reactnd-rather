@@ -54,3 +54,13 @@ redux/data:
     
     New Question: // User may create new question here
     - 
+
+    ------------------- BUILD ORDER -----------------------
+    - backend
+      - redux
+        - build per slice instead of action/reducer subdirectories?
+      - store
+        - test program?
+         
+
+    
