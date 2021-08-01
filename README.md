@@ -7,7 +7,7 @@ description:
   the user generated.
 
 backend:
-  the backend is simulated by canned data as well as functions to pull the data.  
+  the backend is simulated by canned data and functions used to pull push data.  
 
 redux/data:
   redux will be used to control the state and make fetching data from state more accessible.
@@ -38,22 +38,59 @@ redux/data:
 
   frontend 
     Nav Bar: // displayed on every page
-    - Home
+    - Home  (Dashboard)
     - New Question
     - Leaderboard
     - Login [user name if logged in]
     - Log out [ if user logged in]
+    * display logged in username
 
-    Home: // landing page
+    Dashboard: // landing page
     - contains
       - nav
       - unanswered questions [timestamp order]
+        - polls display
+        - shown by default
       - answered questions [timestamp order]
+        - polls display
+      
+     * if user is not logged in, go to login information
+     * double-click opens unanswered question
 
-      if user is not logged in, go to login information
-    
     New Question: // User may create new question here
-    - 
+    - contains
+      - label: would you rather
+      - textbox: optionOne
+      - textbox: optionTwo
+      - button: submit
+
+    Leaderboard: // Listing
+    - graph
+      - user
+      - points (questions+answers)
+      - questions made
+      - questions answered
+    
+    Login
+    - contains
+      - listbox
+        - picture 
+        - name
+      - button: submit
+
+    * authedUser becomes name
+
+    Question
+    - label : Would you rather
+    - radio button: optionOne
+    - label : ------ or ------
+    - radio button: optionTwo
+    - button: Submit
+    
+    * onSubmit : save answer
+                 - update question.option[One|Two].votes[] with authUser
+                 - update state
+                 - close question
 
     ------------------- BUILD ORDER -----------------------
     - backend

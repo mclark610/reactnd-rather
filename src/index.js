@@ -10,7 +10,16 @@ import reportWebVitals from './reportWebVitals';
 import reducer from './reducers'
 import middleware from './middleware/'
 
-const store = createStore(reducer,middleware)
+import { compose } from 'redux';
+
+// development mode.  this setup uses chrome redux devtool extension
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers(
+    middleware
+  ));
+
+// non-devtool chrome extension
+//  const store = createStore(reducer,middleware)
 
 ReactDOM.render(
   <Provider store={store}>
