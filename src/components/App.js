@@ -33,15 +33,14 @@ class App extends React.Component {
               ? null
               :
               <div>
-              <Switch>
-                <Route path='/' exact component={Dashboard} />
                 <Route path='/new' exact component={NewQuestion} />
                 <Route path='/leaderboard' exact component={Leaderboard} />
                 <Route path='/login' exact component={Login} />
-                <Route path='/questions/:id' component={AnswerQuestion} />
-              </Switch>
+                <Route path='/questions/:id' exact component={AnswerQuestion} />
+                <Route path='/' exact component={Dashboard} />
             </div>
             }
+            {             !this.props.authedUser ? <Login/> :null }
           </div>
         </div>
         </Fragment>
@@ -52,7 +51,8 @@ class App extends React.Component {
 
 function mapStateToProps({authedUser}) {
   return {
-    loading: authedUser === null
+    //loading: authedUser === null
+    authedUser
   }
 }
 

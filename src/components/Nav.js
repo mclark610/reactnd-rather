@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom'
 import './nav.css'
 import {connect} from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser';
 
 //<h4>Navigation: I will display the menu. New Question -- Leaderboard -- Login -- Name -- Logout</h4>
 
@@ -22,10 +23,11 @@ class Nav extends React.Component {
             </NavLink>
 
             <NavLink className='doPadding' to='/login' exact activeClassName='active'>
-                {JSON.stringify(this.props.authedUser)}
+                {this.props.authedUser ? this.props.authedUser : 'Login'}
+            
             </NavLink>
 
-            <NavLink className='doPadding' to='/' exact activeClassName='active'>
+            <NavLink className='doPadding' to='/' exact activeClassName='active' onClick={() => this.props.dispatch(setAuthedUser(null))}>
                 Logout
             </NavLink>
             

@@ -1,6 +1,7 @@
 import React,{Fragment} from 'react'
 import QuestionList from './QuestionList'
 import {connect} from 'react-redux'
+import Login from './Login'
 
 class Dashboard extends React.Component {
 
@@ -20,7 +21,11 @@ class Dashboard extends React.Component {
     }
 
     render() {
+        if (!this.props.authedUser) {
+            return(null)
+        }
         const {id} = this.props.authedUser;
+
         return(
             <Fragment>
             <h2>Dashboard: I am home. the landing page if the user is logged in.</h2>
