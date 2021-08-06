@@ -8,8 +8,6 @@ class UserList extends React.Component {
         console.log("keys: " + keys);
         return(
           <div>
-            <h2>UserList</h2>
-            
             <label htmlFor="users">Choose a user:</label>
             <ul className="users" id="users">
             {

@@ -100,4 +100,9 @@ redux/data:
         - test program?
          
 
+  Project Setup: git clone "https://github.com/mclark610/reactnd-rather.git"
+    * cd reactnd-rather
+    * npm install
     
+    To Start the server:   npm run start
+    To Stop the server: CTRL-C

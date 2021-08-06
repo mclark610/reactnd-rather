@@ -6,12 +6,10 @@ import {withRouter} from 'react-router-dom'
 class User extends React.Component {
     onClicked = (e) => {       
         const {dispatch,user} = this.props
-        
-        console.log("user: " + JSON.stringify(user))
-        console.log("user[id]:" + user["id"])
-        dispatch(setAuthedUser({id:user["id"]}));
+       
+        dispatch(setAuthedUser(user["id"]));
 
-//        this.props.history.push('/leaderboard')
+        this.props.history.push('/')
 
     }
     

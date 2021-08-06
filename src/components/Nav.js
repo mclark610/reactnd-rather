@@ -22,9 +22,13 @@ class Nav extends React.Component {
             </NavLink>
 
             <NavLink className='doPadding' to='/login' exact activeClassName='active'>
-                {this.props.authedUser}
+                {JSON.stringify(this.props.authedUser)}
             </NavLink>
 
+            <NavLink className='doPadding' to='/' exact activeClassName='active'>
+                Logout
+            </NavLink>
+            
           </nav>
 
         )

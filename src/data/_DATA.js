@@ -151,13 +151,12 @@ let users = {
     return new Promise((res, rej) => {
       const authedUser = question.author;
       const formattedQuestion = formatQuestion(question)
-  
+
       setTimeout(() => {
         questions = {
           ...questions,
           [formattedQuestion.id]: formattedQuestion
         }
-        
         users = {
           ...users,
           [authedUser]: {
@@ -165,7 +164,7 @@ let users = {
             questions: users[authedUser].questions.concat([formattedQuestion.id])
           }
         }
-  
+
         res(formattedQuestion)
       }, 1000)
     })
