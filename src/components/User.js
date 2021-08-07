@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {setAuthedUser} from '../actions/authedUser'
-import {withRouter} from 'react-router-dom'
+import {Redirect,withRouter} from 'react-router-dom'
 
 class User extends React.Component {
     onClicked = (e) => {       
@@ -9,8 +9,7 @@ class User extends React.Component {
        
         dispatch(setAuthedUser(user["id"]));
 
-        this.props.history.push('/')
-
+        return <Redirect to='/' />
     }
     
     render() {               

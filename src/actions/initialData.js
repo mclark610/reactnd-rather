@@ -1,5 +1,5 @@
 import '../data/_DATA.js'
-import {setAuthedUser} from './authedUser'
+//import {setAuthedUser} from './authedUser'
 import {receiveUsers} from './users'
 import {receiveQuestions} from './questions'
 import { getInitialData } from '../data/api.js';

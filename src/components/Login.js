@@ -1,6 +1,9 @@
 import React from 'react'
 import UserList from './UserList'
 
+/*
+  then  add PrivateRoute to app.js
+*/
 const Login = () => {
     return(
         <div>
@@ -11,3 +14,4 @@ const Login = () => {
 }
 
 export default Login
+

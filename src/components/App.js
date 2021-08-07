@@ -4,13 +4,14 @@ import './App.css';
 import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/initialData'
 import {LoadingBar} from 'react-redux-loading-bar'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Nav from './Nav'
 import Dashboard from './Dashboard'
 import NewQuestion from './NewQuestion'
 import Login from './Login'
 import Leaderboard from './Leaderboard'
 import AnswerQuestion from './AnswerQuestion'
+import PrivateRoute from './PrivateRoute'
 
 class App extends React.Component {
   componentDidMount() {
@@ -33,14 +34,25 @@ class App extends React.Component {
               ? null
               :
               <div>
-                <Route path='/new' exact component={NewQuestion} />
-                <Route path='/leaderboard' exact component={Leaderboard} />
                 <Route path='/login' exact component={Login} />
-                <Route path='/questions/:id' exact component={AnswerQuestion} />
-                <Route path='/' exact component={Dashboard} />
+                <PrivateRoute path='/new' exact >
+                  <NewQuestion/>
+                </PrivateRoute>
+
+                <PrivateRoute path='/leaderboard' exact>
+                  <Leaderboard/>
+                </PrivateRoute>
+
+                <PrivateRoute path='/questions/:id' exact>
+                  <AnswerQuestion/>
+                </PrivateRoute>
+
+                <PrivateRoute path='/' exact>
+                   <Dashboard />
+                </PrivateRoute>
             </div>
             }
-            {             !this.props.authedUser ? <Login/> :null }
+
           </div>
         </div>
         </Fragment>

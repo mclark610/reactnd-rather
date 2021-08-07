@@ -1,7 +1,6 @@
 import React,{Fragment} from 'react'
 import QuestionList from './QuestionList'
 import {connect} from 'react-redux'
-import Login from './Login'
 
 class Dashboard extends React.Component {
 
