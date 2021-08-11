@@ -3,6 +3,14 @@ import { connect } from 'react-redux'
 
 import { Container, Box, Grid, Avatar, Typography } from '@material-ui/core'
 
+/**
+* @description Leaderboard is the reports page of the application
+* @constructor
+* @param {array} userIDs     - User IDs sorted to display most active player
+* @param {object} authedUser - The authorized userID that may answer the question
+* @param {array} users       - array of all users in the game
+*/
+
 class Leaderboard extends React.Component {
 
   render() {

@@ -3,6 +3,14 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Grid, Box, Typography, Avatar } from '@material-ui/core'
 
+/**
+* @description Read only viewing of an already answered question.
+* @constructor
+* @param {object} authedUser - The authorized userID that may answer the question
+* @param {object} question   - question selected for review
+* @param {object} user       - currently logged in user
+*/
+
 class ReviewQuestion extends React.Component {
   constructor(props) {
     super(props)

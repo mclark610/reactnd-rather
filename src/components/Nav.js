@@ -5,6 +5,13 @@ import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser';
 import { Button } from '@material-ui/core'
 
+/**
+* @description The navigation bar.  This allows the user to select which screen to visit
+* @constructor
+* @param {object} authedUser - The authorized userID that may answer the question
+* @param {array} users       - array of all users in the game
+*/
+
 class Nav extends React.Component {
   render() {
     return (

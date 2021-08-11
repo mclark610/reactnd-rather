@@ -10,7 +10,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 //TODO: disableFocusRipple when using doubleclick.  
 // see:https://material-ui.com/api/button/
-
+/**
+* @description User Information to display in the user list.
+*              Selected user gets sent to their home page.
+* @constructor
+* @param {object} user       - currently logged in user
+*/
 
 class User extends React.Component {
   onClicked = (e) => {

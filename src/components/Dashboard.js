@@ -9,6 +9,15 @@ import Box from '@material-ui/core/Box';
 
 //TODO: pad top to get away from main menu
 
+/**
+* @description This is the users home page.  
+* @constructor
+* @param {array}  questionIds- array of questions sorted by timestamp
+* @param {object} authedUser - The authorized userID that may answer the question
+* @param {array} questions   - array of questions
+* @param {array} users       - array of users
+  
+*/
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 

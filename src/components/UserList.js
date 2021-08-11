@@ -3,6 +3,12 @@ import { connect } from 'react-redux'
 import User from './User'
 import { Grid, List } from '@material-ui/core'
 
+/**
+* @description List of users that displays the user to be made active in the game
+* @constructor
+* @param {array} users       - array of users
+**/
+
 class UserList extends React.Component {
  render() {
   const keys = Object.keys(this.props.users);

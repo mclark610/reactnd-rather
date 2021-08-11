@@ -15,7 +15,11 @@ import PrivateRoute from './PrivateRoute'
 import RouteQuestionType from './RouteQuestionType'
 import InvalidPage from './InvalidPage'
 
-//import { Container } from '@material-ui/core';
+
+/**
+* @description Beginning of application.  Please see README.md
+* @constructor
+*/
 
 class App extends React.Component {
   componentDidMount() {

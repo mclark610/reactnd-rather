@@ -5,6 +5,14 @@ import { handleAddQuestion } from '../actions/questions'
 
 import { Box, Grid, Avatar, Typography, Button, TextField } from '@material-ui/core'
 
+/**
+* @description NewQuestion is where the user may create a new question.
+* @constructor
+* @param {object} authedUser - The authorized userID that may answer the question
+* @param {array} questions   - array of all questions
+* @param {array} users       - array of all users in the game
+*/
+
 class NewQuestion extends React.Component {
   constructor(props) {
     super(props)

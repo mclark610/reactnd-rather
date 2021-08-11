@@ -8,6 +8,15 @@ import { FormControl, FormControlLabel, RadioGroup, Radio } from '@material-ui/c
 import { Typography } from '@material-ui/core'
 import { Grid, Avatar } from '@material-ui/core'
 
+/**
+* @description Screen that the user may answer the selected question.  
+* @constructor
+* @param {object} authedUser - The authorized userID that may answer the question
+* @param {object} question   - The question that needs to be answered.  
+*                            - contains 2 options to choose from.
+* @param {object} user       - The details of the user that may answer the question
+*/
+
 class AnswerQuestion extends React.Component {
   constructor(props) {
     super(props)
