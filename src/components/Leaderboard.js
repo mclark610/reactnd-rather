@@ -55,7 +55,6 @@ class Leaderboard extends React.Component {
     }
 }
 
-//</div><h2 ><User key={id} id={id}/>- q{users[id].questions.length} - a{Object.keys(users[id].answers).length}</h2>    
 
 function mapStateToProps({authedUser,users}) {
     return {
