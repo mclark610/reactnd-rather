@@ -1,9 +1,9 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {setAuthedUser} from '../actions/authedUser'
-import {withRouter} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
+import { withRouter } from 'react-router-dom'
 
-import {ListItemAvatar,Avatar} from '@material-ui/core'
+import { ListItemAvatar, Avatar } from '@material-ui/core'
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -13,36 +13,36 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 
 class User extends React.Component {
-    onClicked = (e) => {       
-        const {dispatch,user} = this.props
-       
-        dispatch(setAuthedUser(user["id"]))
+  onClicked = (e) => {
+    const { dispatch, user } = this.props
 
-        this.props.history.push('/')
-    }
-    
-    render() {               
-        const {name,avatarURL} = this.props.user
-        return(
-        <div>
-          <ListItem button onDoubleClick={this.onClicked} key={this.props.user.id}>
-            <ListItemAvatar>
-                <Avatar alt={name} src={avatarURL} />
-            </ListItemAvatar>
-            <ListItemText>
-              {this.props.user.name}
+    dispatch(setAuthedUser(user["id"]))
+
+    this.props.history.push('/')
+  }
+
+  render() {
+    const { name, avatarURL } = this.props.user
+    return (
+      <div>
+        <ListItem button onDoubleClick={this.onClicked} key={this.props.user.id}>
+          <ListItemAvatar>
+            <Avatar alt={name} src={avatarURL} />
+          </ListItemAvatar>
+          <ListItemText>
+            {this.props.user.name}
           </ListItemText>
-          </ListItem>
-        </div>
-      )
-    }
+        </ListItem>
+      </div>
+    )
+  }
 }
 
-function mapStateToProps({users},{id}) {     
-    const user = users[id]
-    return {
-        user,
-        
-    }
+function mapStateToProps({ users }, { id }) {
+  const user = users[id]
+  return {
+    user,
+
+  }
 }
 export default withRouter(connect(mapStateToProps)(User))

@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {connect} from 'react-redux'
-import {handleInitialData} from '../actions/initialData'
-import {LoadingBar} from 'react-redux-loading-bar'
-import {BrowserRouter as Router, Route,Switch} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { handleInitialData } from '../actions/initialData'
+import { LoadingBar } from 'react-redux-loading-bar'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Nav from './Nav'
 import Dashboard from './Dashboard'
 import NewQuestion from './NewQuestion'
@@ -22,48 +22,48 @@ class App extends React.Component {
     this.props.dispatch(handleInitialData())
   }
 
-  render() {   
+  render() {
     return (
       <Router>
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-              <h2>Redux: Would you Rather</h2>
+            <h2>Redux: Would you Rather</h2>
           </header>
           <LoadingBar scope="sectionBar" />
           <div className='container'>
             <Nav />
-            {this.props.loading === true 
+            {this.props.loading === true
               ? null
               :
               <Switch>
                 <Route path='/login' exact component={Login} />
 
                 <PrivateRoute path='/add' exact >
-                  <NewQuestion/>
+                  <NewQuestion />
                 </PrivateRoute>
 
                 <PrivateRoute path='/leaderboard' exact>
-                  <Leaderboard/>
+                  <Leaderboard />
                 </PrivateRoute>
 
                 <PrivateRoute path='/questions/:id' exact>
-                  <RouteQuestionType/>
+                  <RouteQuestionType />
                 </PrivateRoute>
 
                 <PrivateRoute path='/' exact>
-                   <Dashboard />
+                  <Dashboard />
                 </PrivateRoute>
 
                 <PrivateRoute path='/add' exact>
-                   <NewQuestion />
+                  <NewQuestion />
                 </PrivateRoute>
 
                 <Route path='/'>
                   <InvalidPage />
                 </Route>
 
-            </Switch>
+              </Switch>
             }
 
           </div>
@@ -73,7 +73,7 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps({authedUser}) {
+function mapStateToProps({ authedUser }) {
   return {
     //loading: authedUser === null
     authedUser
