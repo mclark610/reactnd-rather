@@ -86,7 +86,7 @@ class ReviewQuestion extends React.Component {
                     </Grid>
                     <Grid container item xs={3} spacing={1} style={{padding: "1rem"}} zeroMinWidth>
                         <Typography noWrap>
-                          {(this.state.optionOneNumVotes/this.state.totalVotes)*100}%
+                          {((this.state.optionOneNumVotes/this.state.totalVotes)*100).toFixed(2)}%
                         </Typography>
                     </Grid>
                 </Grid>
@@ -105,7 +105,7 @@ class ReviewQuestion extends React.Component {
                     </Grid>
                     <Grid container item xs={3} spacing={1} style={{padding: "1rem"}} zeroMinWidth>
                         <Typography noWrap>
-                        {(this.state.optionTwoNumVotes/this.state.totalVotes)*100}%
+                        {((this.state.optionTwoNumVotes/this.state.totalVotes)*100).toFixed(2)}%
                         </Typography>
                     </Grid>
                 </Grid>

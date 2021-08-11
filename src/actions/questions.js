@@ -72,7 +72,6 @@ export function handleAddQuestion(optionOneText,optionTwoText) {
             author:authedUser,
         })
         .then((question) => {
-            console.log("question is " + JSON.stringify(question))
             return dispatch(addQuestion(question))
         })
         .then((question) => {

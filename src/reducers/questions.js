@@ -15,16 +15,12 @@ export default function questions( state = {}, action) {
         case ADD_ANSWER:
             const {authedUser,qid,answer} = action
 
-            console.log("action.answer: " + answer)
-            console.log("qid: " + qid)
-            console.log("answer: " + answer)
-            console.log("questions: " + JSON.stringify(state))
             return {
                 ...state,
                 [qid]: {
                     ...state[qid],
                     [answer]: {
-                        ...state[answer],
+                        ...state[qid][answer],
                         votes: state[qid][answer].votes.concat(authedUser)
                     }
                 }

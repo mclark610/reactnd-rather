@@ -8,6 +8,7 @@ import {Tab, Tabs} from '@material-ui/core'
 import Box from '@material-ui/core/Box';
 
 //TODO: pad top to get away from main menu
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -47,17 +48,16 @@ class Dashboard extends React.Component {
 
     // we need to grab questionID from questions
     getUnAnsweredQuestions = (id) => {    
-        let allQuestionIDs = Object.keys(this.props.questions)    
-        let answered = this.getAnsweredQuestions(id)
-        let remaining = allQuestionIDs.filter((x) => !answered.includes(x))
+        const allQuestionIDs = this.props.questionIds //Object.keys(this.props.questions)    
+        const answered = this.getAnsweredQuestions()
+        const remaining = allQuestionIDs.filter((x) => !answered.includes(x))
 
         return remaining
     }
 
     // we need to grab question IDs from users[authedUser].answers
-    getAnsweredQuestions = (id) => {
-        let answered = Object.keys(this.props.users[this.props.authedUser].answers)
-        return answered
+    getAnsweredQuestions = () => {
+        return Object.keys(this.props.users[this.props.authedUser].answers)
     }
 
     render() {
@@ -65,6 +65,7 @@ class Dashboard extends React.Component {
         if (!this.props.authedUser) {
             return(null)
         }
+
         const {id} = this.props.authedUser
 
         return(
@@ -77,7 +78,6 @@ class Dashboard extends React.Component {
                     indicatorColor="primary"
                     textColor="primary"
                     centered
-                    
                 >
                     <Tab label="Unanswered" {...updateTabID(0)}/>
                     <Tab label="Answered" {...updateTabID(1)} />
@@ -88,7 +88,9 @@ class Dashboard extends React.Component {
                 <TabPanel value={this.state.tabName} index={1}>
                     <QuestionList answered={true} questionIDs={this.getAnsweredQuestions(id)}/>
                 </TabPanel>
+                
             </Paper>
+              <Typography color="primary">Please double-click question you wish to review</Typography>
             </Grid>
 
         )

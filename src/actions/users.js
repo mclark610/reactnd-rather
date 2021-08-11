@@ -9,13 +9,15 @@ export function receiveUsers(users) {
     }
 }
 
-export function addQuestionToUser(question) {
+export function addQuestionToUser(question) {   
     return {
         type: ADD_QUESTION_TO_USER,
         question
     }
 }
+
 export function addAnswerToUser(authedUser, qid, answer) {
+    console.log("addAnswerToUser answer: " + JSON.stringify(answer))
     return {
         type: ADD_ANSWER_TO_USER,
         authedUser,
