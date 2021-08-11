@@ -1,17 +1,21 @@
-import React,{Fragment} from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/initialData'
 import {LoadingBar} from 'react-redux-loading-bar'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route,Switch} from 'react-router-dom'
 import Nav from './Nav'
 import Dashboard from './Dashboard'
 import NewQuestion from './NewQuestion'
 import Login from './Login'
 import Leaderboard from './Leaderboard'
-import AnswerQuestion from './AnswerQuestion'
+
 import PrivateRoute from './PrivateRoute'
+import RouteQuestionType from './RouteQuestionType'
+import InvalidPage from './InvalidPage'
+
+//import { Container } from '@material-ui/core';
 
 class App extends React.Component {
   componentDidMount() {
@@ -21,7 +25,6 @@ class App extends React.Component {
   render() {   
     return (
       <Router>
-        <Fragment>
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
@@ -33,9 +36,10 @@ class App extends React.Component {
             {this.props.loading === true 
               ? null
               :
-              <div>
+              <Switch>
                 <Route path='/login' exact component={Login} />
-                <PrivateRoute path='/new' exact >
+
+                <PrivateRoute path='/add' exact >
                   <NewQuestion/>
                 </PrivateRoute>
 
@@ -44,18 +48,26 @@ class App extends React.Component {
                 </PrivateRoute>
 
                 <PrivateRoute path='/questions/:id' exact>
-                  <AnswerQuestion/>
+                  <RouteQuestionType/>
                 </PrivateRoute>
 
                 <PrivateRoute path='/' exact>
                    <Dashboard />
                 </PrivateRoute>
-            </div>
+
+                <PrivateRoute path='/add' exact>
+                   <NewQuestion />
+                </PrivateRoute>
+
+                <Route path='/'>
+                  <InvalidPage />
+                </Route>
+
+            </Switch>
             }
 
           </div>
         </div>
-        </Fragment>
       </Router>
     );
   }

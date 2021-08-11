@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {handleAddQuestion} from '../actions/questions'
 
+import {Box,Grid,Avatar,Typography,Button,TextField} from '@material-ui/core'
+
 class NewQuestion extends React.Component {
     constructor(props) {
         super(props)
@@ -28,7 +30,7 @@ class NewQuestion extends React.Component {
             optionOne: '',
             optionTwo: ''
         })
-        
+
         this.props.history.push('/')
 
     }
@@ -48,20 +50,32 @@ class NewQuestion extends React.Component {
     render() {
         return (
             <div>
-                <h2>I am a New Question.</h2>
-                <h2>Would You Rather</h2>
-                <form action="#" onSubmit={this.onSubmit} >
-                    <label htmlFor="optionOne">Option One</label>
-                    <input type="text" name="optionOne" id="optionOne" onChange={this.handleChange}/>
-                    <br/>
-                    <h2>--- OR --- </h2>
-                    <label htmlFor="optionTwo">Option Two</label>
-                    <input type="text" name="optionTwo" id="optionTwo" onChange={this.handleChange}/>
-                    <br/>
-                    <button type="submit" >Continue</button>
-                    <button onClick={this.handleCancel}>Cancel</button>
-                </form>
+            <Grid container direction="row" justifyContent="center" spacing={0} alignItems="flex-start" >
+                  <Grid item xs={1}>
+                    <Avatar alt={this.props.authedUser} src={this.props.users[this.props.authedUser].avatarURL} />
+                  </Grid>
+                    <Typography variant="h4">Would you rather ... </Typography>
+            </Grid>
+            <form action="#" onSubmit={this.onSubmit} >
+               <Box component="span" m={3}>
+                    <TextField style={{width:"60%", margin: "10px"}}  id="optionOne" name="optionOne" label="Option One" variant="outlined"  size="small" onChange={this.handleChange}  required/>
+                </Box>
+                <Typography>---OR---</Typography>
+                <Box component="span" m={3}>
+                    <TextField style={{width:"60%", margin: "10px"}} minLength={1} id="optionTwo" name="optionTwo" label="Option Two" variant="outlined" size="small" onChange={this.handleChange}  required/>
+                </Box>
 
+                <Box component="p" style={{width: "100%"}} m={3}>
+
+                    <Button style={{margin: "10px"}} variant="contained" color="primary" type="submit" onClick={this.handleOnSubmit}>
+                            Continue
+                    </Button>
+                
+                    <Button variant="contained" color="primary" onClick={() => this.props.history.push('/')}>
+                        Cancel
+                    </Button>
+                </Box>
+            </form>
             </div>
         )
     }

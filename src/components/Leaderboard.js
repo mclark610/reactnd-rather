@@ -1,36 +1,61 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {Container,Box,Grid,Avatar,Typography} from '@material-ui/core'
+
 class Leaderboard extends React.Component {
 
     render() {
         const {users,userIDs} = this.props
-        console.log("userID: " + JSON.stringify(userIDs))
-        console.log("USERS:::" + JSON.stringify(users))
         return (
-            <div>
-                I am leaderboard.  I will display table of all data.
+                <Container >
+                    <Typography>Leaderboard</Typography>
+                    <Box border={1} alignContent="center">
+                    <Grid container direction="row" spacing={0} style={{width:"70%"}} >
+                        <Grid item xs={4}>
+                            Name
+                        </Grid>
+                        <Grid item xs={2}>
+                        <Typography>#Questions</Typography>
+                        </Grid>
+                        <Grid item xs={3}>
+                        <Typography>Answered</Typography>
+                        </Grid>
+                        <Grid item xs={3}>
+                        <Typography>Total</Typography>
+                        </Grid>
+                    </Grid>
+                    <Grid container direction="row" spacing={0} style={{width:"70%"}}>
+                {userIDs.map( (id) => (
+                        <React.Fragment>
 
-                <h2>Data Table</h2>
-                <div>User Name</div>
-                <div>User Picture</div>
-                <div>questions asked</div>
-                <div>answered questions</div>
-                <div>total</div>
-            <div>*users are sorted by total </div>
-            <ul>
-            {userIDs.map( (id) => (
-                <li key={id}>
-                  {users[id].name} - {users[id].avatarURL} - q{users[id].questions.length} - a{Object.keys(users[id].answers).length}
-                </li>
+                        <Grid item xs={1}>
+                            <Avatar alt={users[id].name} src={users[id].avatarURL} />
+                        </Grid>
 
-            ))}
-            </ul>
-
-            </div>
+                        <Grid item xs={2}>
+                            <Typography >{users[id].name}</Typography>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography>{users[id].questions.length}</Typography>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography>{Object.keys(users[id].answers).length}</Typography>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography>{Object.keys(users[id].answers).length+users[id].questions.length}</Typography>
+                        </Grid>
+                        </React.Fragment>
+                        
+                ))}
+                </Grid>
+                </Box>
+            </Container>
         )
     }
 }
+
+//</div><h2 ><User key={id} id={id}/>- q{users[id].questions.length} - a{Object.keys(users[id].answers).length}</h2>    
 
 function mapStateToProps({authedUser,users}) {
     return {

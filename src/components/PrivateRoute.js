@@ -2,26 +2,11 @@ import React from 'react'
 import {Route,Redirect,withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-export const fakeAuth = {
-    isAuthenticated: false,
-    authenticate(cb) {
-      this.isAuthenticated = true
-      setTimeout(cb, 100) // fake async
-    },
-    signout(cb) {
-      this.isAuthenticated = false
-      setTimeout(cb, 100) // fake async
-    }
-  }
- 
-
 function PrivateRoute ( {children, ...rest }) {
-   console.log("PrivateRoute:authedUser: " + rest.authedUser)
-   console.log("PrivateRoute:rest: " + JSON.stringify(rest))
-//   console.log("PrivateRoute:typeof: " + typeof this.props)
-    return (
+  
+  return (
       <Route {...rest} render= {() => {
-       console.log("PrivateRoute::return?")
+        console.log("rest: " + JSON.stringify(rest))
 
       return rest.authedUser !== null
           ? children
@@ -29,9 +14,8 @@ function PrivateRoute ( {children, ...rest }) {
       }} />
     )
   }
-
+ 
   function mapStateToProps({authedUser}) {
-    console.log("PrivateRoute:mapStateToProps::authedUser: " + authedUser)
     return {
       authedUser
     }

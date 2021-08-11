@@ -3,33 +3,31 @@ import {NavLink} from 'react-router-dom'
 import './nav.css'
 import {connect} from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser';
-
-//<h4>Navigation: I will display the menu. New Question -- Leaderboard -- Login -- Name -- Logout</h4>
+import {Button} from '@material-ui/core'
 
 class Nav extends React.Component {
     render() {
         return(
+        
           <nav>
-            <NavLink className='doPadding' to='/' exact activeClassName='active'>
+            <Button component={NavLink} variant='text' color='primary' size='large' to="/" exact activeClassName='active' className='doPadding'>
                 Home
-            </NavLink>
+            </Button>
 
-            <NavLink className='doPadding' to='/new' exact activeClassName='active'>
+            <Button component={NavLink} variant='text' color='primary' size='large' to="/add" exact activeClassName='active' className='doPadding'>
                 New Question
-            </NavLink>
+            </Button>
 
-            <NavLink className='doPadding' to='/leaderboard' exact activeClassName='active'>
+            <Button component={NavLink} variant='text' color='primary' size='large' to="/leaderboard" exact activeClassName='active' className='doPadding'>
                 Leaderboard
-            </NavLink>
+            </Button>
 
-            <NavLink className='doPadding' to='/login' exact activeClassName='active'>
-                {this.props.authedUser ? this.props.authedUser : 'Login'}
-            
-            </NavLink>
-
-            <NavLink className='doPadding' to='/' exact activeClassName='active' onClick={() => this.props.dispatch(setAuthedUser(null))}>
+            <Button component={NavLink} variant='text' color='primary' size='large' to="/login" exact activeClassName='active' className='doPadding'>
+                {this.props.authedUser ? this.props.users[this.props.authedUser].name : 'Login'}
+            </Button>
+            <Button component={NavLink} variant='text' color='primary' size='large' to="/" exact activeClassName='active' onClick={() => this.props.dispatch(setAuthedUser(null))} className='doPadding'>
                 Logout
-            </NavLink>
+            </Button>
             
           </nav>
 
@@ -38,10 +36,6 @@ class Nav extends React.Component {
 }
 
 function mapStateToProps({authedUser,users}) {
-    console.log("authedUser: " + authedUser)
-    console.log("type: " + typeof authedUser)
-    console.log("authedUser: " + JSON.stringify(authedUser))
-    
     return {
         authedUser,
         users
