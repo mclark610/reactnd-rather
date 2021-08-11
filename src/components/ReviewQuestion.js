@@ -15,8 +15,8 @@ class ReviewQuestion extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      optionOne: "",
-      optionTwo: "",
+      optionOne: { p: 0, border: '' },
+      optionTwo: { p: 0, border: '' },
       optionOneNumVotes: 0,
       optionTwoNumVotes: 0
     }
